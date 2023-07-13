@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--experment for newgeometry 29thAug19-->
+
+<meta http-equiv="Content-Security-Policy">
+<!-- jQuery library -->
+
+<link href="../css/bootstrap.css" rel="stylesheet" />
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="../scripts/lib/bootstrap.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="../css/CustomStyle2.css" rel="stylesheet" />
+
+<script src="../scripts/lib/jquery.validate.js" ></script>
+
+<script src="../scripts/lib/jsts.min.js"></script>
+<script src="../scripts/lib/ol.js"></script>
+
+<script src="JS/mapingmain.js"></script>
+<script src="JS/featureStyles.js"></script>
+<script src="JS/common.js"></script>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid" style="background-color: #00466E">
+			<div class="navbar-header">
+				<table>
+					<tr>
+						<td><img src="../images/AP-LOGO.png" align="middle" alt=""
+							width="44" height="45"
+							style="padding-top: 1px; padding-left: 1px"></td>
+						<td style="vertical-align: left; padding-top: 2px;"><h3
+								style="color: #ffffff;">&nbsp;AP State	 Housing&nbsp;
+								Mapping</h3></td>
+
+					</tr>
+				</table>
+
+			</div>
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><button type="submit" class="btn navbar-btn btn-danger"
+							name="logout" id="logout" value="Log Out"
+							onclick="location.href='DEOlogin.html'">Log Out</button></li>
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<div class="col-md-4">
+
+
+				  <form id="registerform" method="post">
+
+					<div class="col-md-12">
+						<div class="row">
+
+							<table id='upload_3dtbl' class="table-condensed"
+								style="width: 100%;">
+								<tbody>
+									<tr>
+										<td class="col-md-6 MColor1"><span class="asterisk">*</span><label>State</label>
+										</td>
+										<td class="col-md-6"><select id="drp_state_hsm"
+											class="form-control" name="state">
+												<option value="0">--Select State--</option>
+												<option>ANDHRAPRADESH</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td class="col-md-6 MColor2"><span class="asterisk">*</span>
+											<label>Muncipality</label></td>
+										<td><select id="drp_muncipality_hsm" class="form-control"
+											name="muncipality">
+												<option value="0">--Select Muncipality--</option>
+												<option>AMARAVATHI MUNCIPALITY</option>
+										</select></td>
+
+									</tr>
+									<tr>
+										<td
+											class="col-md-6 MColor1>
+                                                        <span class="asterisk">*</span>
+											<label>Circle</label>
+										</td>
+										<td><select id="cir_drdn_hsm" class="form-control"
+											name="circle">
+												<option value="0">--Select Circle--</option>
+												<option value="Amaravathi">Amaravathi</option>
+
+
+
+										</select></td>
+									</tr>
+									<tr>
+										<td class="col-md-6 MColor2"><span class="asterisk">*</span>
+											<label>Ward:</label></td>
+										<td><select id="locality_drdn_hsm" class="form-control"
+											name="ward">
+												<option value="0">--Select Ward--</option>
+
+										</select></td>
+									</tr>
+
+
+									<tr>
+										<td class="col-md-6 MColor1"><span class="asterisk">*</span>
+											<label>Property Type</label></td>
+
+										<td><select id="residential_drp_hsm" class="form-control "
+											name="propertyType">
+												<option value="0">--Select Property Type--</option>
+												<option>Residential</option>
+												<option>Commercial</option>
+												<option>Residential & Commercial</option>
+												<option>Utilities</option>
+												<option>Parks</option>
+												<option>Government Buildings</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td class="col-md-6 MColor2"><label>Map Unique Id
+												:</label></td>
+										<td><input type="text" id="txt_uniqid_hsm" name="uniqueID"
+											class="form-control " /></td>
+									</tr>
+
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+					<div class="row">
+						<div id="propertydtls" style="border: 1px soild black;">
+
+							<div class="form-row">
+								<h4 style="color: blue;">Property Details</h4>
+								<div class="form-group col-md-4">
+                                   <label for="id_bldname_hsm">Building Name</label>
+									<input type="text" class="form-control  input-sm"
+										id="id_bldname_hsm" placeholder="Building Name">
+								</div>
+
+								<div class="form-group col-md-4">
+                                       <label for="id_ptno_hsm">Plot Number</label>
+									<input type="text" class="form-control  input-sm"
+										id="id_ptno_hsm" placeholder="Plot Number" name="plotNumber">
+								</div>
+								<div class="form-group col-md-4">
+                                     <label for="id_pltArea_hsm">Plot Area</label>
+									<input type="text" class="form-control " id="id_pltArea_hsm"
+										placeholder="PlinthArea" name="plotArea">
+								</div>
+							</div>
+
+
+							<div class="form-row">
+								<div class="form-group col-md-4">
+                                  <label for="id_localty_hsm">Locality</label>
+									<input type="text" class="form-control " id="id_localty_hsm"
+										placeholder="Locality">
+								</div>
+
+								<div class="form-group col-md-4">
+                                        <label for="id_sublocalty_hsm">SubLocality</label>
+									<input type="text" class="form-control" id="id_sublocalty_hsm"
+										placeholder="Sublocality">
+								</div>
+								<div class="form-group col-md-4">
+                                     <label for="landmark_hsm">SubLocality</label>
+									<input type="text" class="form-control" id="landmark_hsm"
+										placeholder="LandMark">
+								</div>
+							</div>
+							<div class="form-row">
+
+								<div class="form-group col-md-4">
+                                     <label for="id_roadnm_hsm">Roadname</label>
+									<input type="text" class="form-control" id="id_roadnm_hsm"
+										placeholder="RoadName">
+								</div>
+
+								<div class="form-group col-md-4">
+                                    <label for="id_city_hsm">City</label>
+									<input type="text" class="form-control" id="id_city_hsm"
+										placeholder="City">
+								</div>
+
+								<div class="form-group col-md-4">
+                                      <label for="id_pincode_hsm">Pincode</label>
+									<input type="text" class="form-control" id="id_pincode_hsm"
+										placeholder="Pincode">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-4"></div>
+
+								<div class="form-group col-md-6">
+									<input type="submit" id="btn_saveNewPro"
+										class="btn btn-primary" value="Save">
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+					
+					  </form>
+					<div class="row">
+						<div id="utilitydtls" style="display: none; padding: 10px">
+							<div class="form-row">
+								<h4 style="color: blue;">Utility Details</h4>
+
+								<div class="form-group col-md-4">
+
+									<select id="drp_utlitytype_id" class="form-control ">
+										<option selected>UtilityType</option>
+										<option>Trees</option>
+										<option>Poles</option>
+										<option>Manholes</option>
+										<option>DumperBins</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="Utility_id"
+										placeholder="Department Utility ID">
+								</div>
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_material"
+										placeholder="Material Of Utility">
+								</div>
+							</div>
+
+
+
+							<div class="form-row">
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_utl_locality"
+										placeholder="Locality">
+								</div>
+
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_utl_subloca"
+										placeholder="Sub Locality">
+								</div>
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_utl_landmark"
+										placeholder="LandMark">
+								</div>
+							</div>
+							<div class="form-row">
+
+
+
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_utl_roadname"
+										placeholder="RoadName">
+								</div>
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_utl_city"
+										placeholder="City">
+								</div>
+								<div class="form-group col-md-4">
+
+									<input type="text" class="form-control " id="id_utl_pincode"
+										placeholder="Pincode">
+								</div>
+							</div>
+
+
+							<div class="form-row">
+								<div class="form-group col-md-4"></div>
+								<div class="form-group col-md-4">
+									<input type="button" id="btn_saveUtility"
+										class="btn btn-primary" value="SaveUtility">
+								</div>
+								<div class="form-group col-md-4"></div>
+							</div>
+							
+							
+
+						</div>
+					</div>
+
+
+ 
+         <div id="benDtlDlg" title="PlotDetails" style="display:none ">
+         <table class="table table-bordered">
+         <tr>     
+         
+          <td><label>PlotNumber:</label></td><td id="pltno" style ="color:blue"></td>
+         </tr>
+          <tr>
+          <td><label>PlinthArea:</label></td><td id="pltArea" style ="color:blue"></td>
+         </tr>
+          <tr>
+        <td><label>SurveryNumber:</label></td><td id="id_surNo" style ="color:blue"></td>
+         </tr>
+          <tr>
+         <td><label>VillageName:</label></td><td id="id_city" style ="color:blue"></td>
+         </tr>
+         <tr><td> <a href="D:\Murthy\NIC\code\googlemaps\483">google</td></tr>
+         
+         </table>
+         
+        
+        
+        
+        </div>
+ <div id="utilitylDlg" title="PlotDetails" style="display:none ">
+         <table class="table table-bordered">
+         <tr>     
+         
+          <td><label>UtilityType:</label></td><td id="utltype" style ="color:blue"></td>
+         </tr>
+         
+          <tr>
+        <td><label>SurveryNumber:</label></td><td id="id_surNo" style ="color:blue"></td>
+         </tr>
+          <tr>
+         <td><label>VillageName:</label></td><td id="id_city" style ="color:blue"></td>
+         </tr>
+         
+         </table>
+         
+        
+        
+        
+        </div>
+
+			
+
+
+
+
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="options">
+
+						<label>Operations: &nbsp;</label> <input type="button"
+							class="btn btn-info" id="split" name="split" value="Split" />
+						&nbsp;&nbsp; <input type="button" class="btn btn-info" id="delete"
+							name="split" value="Delete" /> &nbsp;&nbsp; &nbsp;&nbsp; <label>AddGeometry
+							Type: &nbsp;</label> <input type="button" class="btn btn-info"
+							id="addpoint" name="Polygon" value="AddPoint" /> <input
+							type="button" class="btn btn-info" id="AddPolygon" name="Polygon"
+							value="AddPolygon" /> <input type="button" class="btn btn-info"
+							id="PrintPDF" name="Polygon" value="ExportPDF" /> <input
+							type="button" class="btn btn-info" id="lyr" name="Polygon"
+							value="Layers" />
+
+					</div>
+
+				</div>
+				<div class="row">
+					<div id="map" class="customDivMap" style="height: 650px">
+					
+					<div id="coords"></div>
+
+                        </div>
+                        	
+
+                        </div>
+					
+					</div>
+					<div id="dialog" title="Layers" style="display: none">
+						<label><input type="checkbox" class="chkbtn" name="colorRadio" value="stateLayer"> State Boundary</label> <br />
+						<label><input type="checkbox" class="chkbtn"
+							name="colorRadio" value="districtLayer"> District
+							Boundary</label><br /> <label><input type="checkbox"
+							class="chkbtn" name="colorRadio" value="mandalLayer">
+							Mandal Boundary</label> <label><input type="checkbox"
+							class="chkbtn" name="colorRadio" value="villageLayer">
+							Village Boundary</label>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="row">
+
+
+			<div id="middle_div" class="customDiv1" style="display: none">
+				<div class="col-md-12">
+					<table id="table_id" class="table table-bordered"
+						style="width: 100%;">
+						<thead>
+							<tr>
+								<th>Struct_ID</th>
+								<th>Ptin/GSTin</th>
+								<th>Labour License</th>
+								<th>GST</th>
+								<th>Owner Name</th>
+								<th>Floor</th>
+								<th>LandUseType</th>
+								<th>Area(Sft)</th>
+							</tr>
+						</thead>
+
+					</table>
+
+				</div>
+
+				<div class="col-md-6"></div>
+
+				<div class="col-md-6">
+
+					<input type="button" id="sub_val" class="btn btn-success"
+						value="Submit" />
+
+				</div>
+
+
+			</div>
+
+
+
+
+
+		</div>
+
+
+		<div class="row">
+			<div class="footer">
+				<!-- Main Footer -->
+
+				<table class="footer_table" style="width: 100%">
+
+					<tr>
+						<td style="width: 20%"></td>
+						<td style="width: 60%">
+							<p>
+								Designed, Developed & Maintained by : National Informatics
+								Centre, APSC, Amaravathi.</br> Disclaimer : Content on this website
+								is published and managed by Department of AP, GoAP, Amaravathi.
+
+							</p>
+						</td>
+
+						<td style="width: 20%; text-align: right"><img
+							src="../images/niclogo.png"></td>
+					</tr>
+
+				</table>
+
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>

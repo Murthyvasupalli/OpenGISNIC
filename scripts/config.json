@@ -1,0 +1,15 @@
+
+
+{
+ "geoserverHost":"http://bhunaksha.ap.gov.in:8080/",
+ "serviceurl" :"https://bhunaksha.ap.gov.in/ptax/",
+ "apwmsLayersUrl":"http://bhunaksha.ap.gov.in/geoserver/APCRDA/wms?:",
+  "localgeoserverHost":"http://localhost:8085/",
+  "localserviceurl":"http://localhost:8086/Spring_REST/",
+  "layerhostOne":"geoserver/APCRDA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=APCRDA:",
+  "layerhostTwo":"&maxFeatures=30000&outputFormat=application%2Fjson",
+  "layernames":["LPSVillages","krishnayapalem_bound","krishnayapalemv1","groundfloorc6","krishnayyapalem_utility","eluru3d","ap_boundary","district%20boundary"], 
+  "getValuesFrmMuncipalDb_url":"muncipalDb"
+  
+ 
+}
