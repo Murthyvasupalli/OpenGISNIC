@@ -2,11 +2,6 @@
  * 
  */
 
-
-
-
-
-
  var ServiceUrl={
 		
 		 "geoserverHost" : "http://localhost:8085/", // "http://bhunaksha.ap.gov.in:8080/",
